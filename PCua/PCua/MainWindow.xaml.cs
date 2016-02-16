@@ -12,11 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 using System.Management;
 
 //|=======================|//
 //| PCua                  |//
+//| v0.0.0.1              |//
 //|                       |//
 //| Analyzes current      |//
 //| PC build and offers   |//
@@ -50,10 +50,10 @@ namespace PCua
         {
             InitializeComponent();
 
-
-           
+            //stores all system info as string
             string info="";
 
+            //Finds CPU name (note: lines 58-63 will be moved to cpu class as)
             ManagementObjectSearcher CPUdetail = new ManagementObjectSearcher("SELECT name FROM Win32_Processor");
             ManagementObjectCollection details = CPUdetail.Get();
             foreach (ManagementObject detail in details)
@@ -61,14 +61,14 @@ namespace PCua
                 info = (detail["name"].ToString());
             }
 
-
-            lbl_TestOutput.Content = info;
-
-            
+            //write info
+            lbl_TestOutput.Content = info;          
         }
     }
 }
 public partial class CPU
 {
-    
+ //cpu info goes here
+
+ //get cpu method      
 }
