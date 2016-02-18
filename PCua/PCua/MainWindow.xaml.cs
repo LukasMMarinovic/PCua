@@ -50,25 +50,60 @@ namespace PCua
         {
             InitializeComponent();
 
-            //stores all system info as string
-            string info="";
 
-            //Finds CPU name (note: lines 58-63 will be moved to cpu class as)
-            ManagementObjectSearcher CPUdetail = new ManagementObjectSearcher("SELECT name FROM Win32_Processor");
-            ManagementObjectCollection details = CPUdetail.Get();
-            foreach (ManagementObject detail in details)
-            {
-                info = (detail["name"].ToString());
-            }
-
-            //write info
-            lbl_TestOutput.Content = info;          
+            //display system information
+            lbl_TestOutput.Content = CPU.getCPUName();          
         }
     }
 }
-public partial class CPU
-{
- //cpu info goes here
 
- //get cpu method      
+//responsible for all system hardware data and methods
+public class HardwareInfo
+{
+    //complete collection of all hardware data
 }
+
+//responsible for all CPU data and methods
+public class CPU
+{
+    /// searches Win32_Processor for CPU name/info
+    /// returns: CPU name as string (CPUName)
+    public static string getCPUName()
+    {
+        string CPUName = "";
+
+        ManagementObjectSearcher CPUdetail = new ManagementObjectSearcher("SELECT name FROM Win32_Processor");
+        ManagementObjectCollection details = CPUdetail.Get();
+        foreach (ManagementObject detail in details)
+        {
+            CPUName = (detail["name"].ToString());
+        }
+
+        return CPUName;
+    }
+}
+
+//todo
+public class RAM
+{
+
+}
+public class GPU
+{
+
+}
+public class Storage
+{
+
+}
+
+//things that change with other things
+public class Motherboard
+{
+
+}
+public class PSU
+{
+
+}
+
