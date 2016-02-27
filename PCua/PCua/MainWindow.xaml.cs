@@ -16,7 +16,7 @@ using System.Management;
 
 //|=======================|//
 //| PCua                  |//
-//| v0.0.0.1              |//
+//| v0.0.0.2              |//
 //|                       |//
 //| Analyzes current      |//
 //| PC build and offers   |//
@@ -52,7 +52,7 @@ namespace PCua
 
 
             //display system information
-            lbl_TestOutput.Content = CPU.getCPUName();          
+            lbl_TestOutput.Content = (Motherboard.getMotherboardName());          
         }
     }
 }
@@ -72,9 +72,9 @@ public class CPU
     {
         string CPUName = "";
 
-        ManagementObjectSearcher CPUdetail = new ManagementObjectSearcher("SELECT name FROM Win32_Processor");
-        ManagementObjectCollection details = CPUdetail.Get();
-        foreach (ManagementObject detail in details)
+        ManagementObjectSearcher CPUdetail = new ManagementObjectSearcher("SELECT * FROM Win32_Processor");
+        ManagementObjectCollection detailscpu = CPUdetail.Get();
+        foreach (ManagementObject detail in detailscpu)
         {
             CPUName = (detail["name"].ToString());
         }
@@ -83,11 +83,54 @@ public class CPU
     }
 }
 
-//todo
-public class RAM
+
+// in progress
+//responsible for all Motherboard data and methods
+public class Motherboard
 {
+    /// searches Win32_BaseBoard for motherboard name/info
+    /// returns: Motherboard name as string (MotherboardName)
+    public static string getMotherboardName()
+    {
+        string MotherboardName = "";
+
+        ManagementObjectSearcher Motherboarddetail = new ManagementObjectSearcher("Select * From Win32_BaseBoard");
+        ManagementObjectCollection detailsmotherboard = Motherboarddetail.Get();
+        foreach (ManagementObject detail in detailsmotherboard)
+        {
+            MotherboardName = (detail["Model"].ToString());   //*BROKEN*  fix needed. 
+        }
+
+        return MotherboardName;
+    }
 
 }
+
+
+
+
+
+
+
+//to do
+public class RAM
+{
+   /* public static string getRAMName()
+    {
+        string RAMName = "";
+
+        ManagementObjectSearcher RAMdetail = new ManagementObjectSearcher("Select name From Win32_MotherboardDevice ");
+        ManagementObjectCollection detailsram = RAMdetail.Get();
+        foreach (ManagementObject detail in detailsram)
+        {
+            RAMName = (detail["name"].ToString());
+        }
+
+        return RAMName;
+    }*/
+
+}
+
 public class GPU
 {
 
@@ -97,11 +140,7 @@ public class Storage
 
 }
 
-//things that change with other things
-public class Motherboard
-{
 
-}
 public class PSU
 {
 
