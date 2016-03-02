@@ -16,9 +16,8 @@ using System.Management;
 
 namespace PCua
 {
-    class Storage 
+    interface PCPart
     {
-        //find storage devices and size of each
-
+        string getInfo();
     }
 }

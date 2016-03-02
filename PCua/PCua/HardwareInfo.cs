@@ -19,9 +19,35 @@ namespace PCua
 {
     class HardwareInfo
     {
+        string SystemInfo;
 
+        CPU cpu = new CPU();
+        GPU gpu = new GPU();
+
+        //list containing all pc components in system
+        List<PCPart> parts = new List<PCPart>();
+
+
+        public HardwareInfo()
+        {
+            parts.Add(cpu);
+            parts.Add(gpu);
+
+            //package system info into a single string
+            foreach (PCPart part in parts)
+            {
+                SystemInfo = SystemInfo + "\n" + part.getInfo();
+
+            }
+        }
        
+        /// grabs SystemInfo
+        /// returns SystemInfo
+        public string getSystemInfo()
+        {
+            return SystemInfo;
 
+        }
          
 
 

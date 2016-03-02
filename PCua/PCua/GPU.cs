@@ -16,12 +16,13 @@ using System.Management;
 
 namespace PCua
 {
-    class GPU
+    class GPU : PCPart
     {
         string GPUName = "";
-        ///constructor that sets GPU name
+
         public GPU()
         {
+            //finds GPU name
             ManagementObjectSearcher GPUdetail = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
             ManagementObjectCollection detailsgpu = GPUdetail.Get();
             foreach (ManagementObject detail in detailsgpu)
@@ -29,8 +30,10 @@ namespace PCua
                 GPUName = (detail["name"].ToString());
             }
         }
-        ///returns gpu name after object has been initialized
-        public string getGPU()
+
+        /// grabs GPU info 
+        ///returens GPUName
+        public string getInfo()
         {
             return GPUName;
         }

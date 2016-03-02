@@ -18,7 +18,12 @@ namespace PCua
 {
     class Motherboard
     {
-        /// searches Win32_BaseBoard for motherboard name/info
+
+        //is it really worth replacing your motherboard?
+
+
+
+        /* /// searches Win32_BaseBoard for motherboard name/info
         /// returns: Motherboard name as string (MotherboardName)
         public static string getMotherboardName()
         {
@@ -33,6 +38,7 @@ namespace PCua
             }
 
             return MotherboardName;
-        }
+        } */
+
     }
 }

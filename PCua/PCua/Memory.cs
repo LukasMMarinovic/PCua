@@ -16,7 +16,7 @@ using System.Management;
 
 namespace PCua
 {
-    class Memory
+    class Memory 
     {
 
         //find amount and number of slots filled/slots

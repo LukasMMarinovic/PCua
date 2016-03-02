@@ -16,13 +16,13 @@ using System.Management;
 
 namespace PCua
 {
-    //responsible for all CPU data and methods
-    class CPU
+    class CPU : PCPart
     {
         string CPUName = "";
 
         public CPU()
         {
+            //finds CPU name
             ManagementObjectSearcher CPUdetail = new ManagementObjectSearcher("SELECT * FROM Win32_Processor");
             ManagementObjectCollection detailscpu = CPUdetail.Get();
             foreach (ManagementObject detail in detailscpu)
@@ -31,5 +31,11 @@ namespace PCua
             }            
         }
 
+        /// grabs CPU info
+        ///returens CPUName
+        public string getInfo()
+        {
+            return CPUName;
+        }
     }
 }

@@ -16,7 +16,7 @@ using System.Management;
 
 //|=======================|//
 //| PCua                  |//
-//| v0.0.0.3              |//
+//| v0.0.0.4              |//
 //|                       |//
 //| Analyzes current      |//
 //| PC build and offers   |//
@@ -51,10 +51,10 @@ namespace PCua
         public MainWindow()
         {
             InitializeComponent();
-
+            HardwareInfo MySystem = new HardwareInfo();
 
             //display system information
-            lbl_TestOutput.Content = "";
+            lbl_TestOutput.Content = MySystem.getSystemInfo(); ;
             
         }
     }

@@ -59,6 +59,7 @@
     <Compile Include="HardwareInfo.cs" />
     <Compile Include="Memory.cs" />
     <Compile Include="Motherboard.cs" />
+    <Compile Include="PCPart.cs" />
     <Compile Include="Storage.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
