@@ -1,3 +1,4 @@
 # PCua
 > Features
-displays CPU and GPU names
+
+-displays CPU and GPU names
