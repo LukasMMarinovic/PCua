@@ -1,3 +1,3 @@
 # PCua
 > Features
-  -right now there are zero features :(
+displays CPU and GPU names
